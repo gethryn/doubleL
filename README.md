@@ -10,8 +10,7 @@ Open Finder, and press Cmd-Shift-U to open utilities menu.  Double click on Term
 
 Navigate to the directory:
 
-`cd ~`
-`cd Documents/newdirectory`
+`cd ~/Documents/newdirectory`
 
 Then type the following to begin processing the files:
 
