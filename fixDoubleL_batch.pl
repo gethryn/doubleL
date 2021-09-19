@@ -33,6 +33,7 @@ print STDOUT "There are $numfiles file(s) to process: ";
 print STDOUT join "; ", @textfiles;
 print STDOUT ".\n";
 
+# List of replacement words
 my %replace = (
     "intercol egiate" => "intercollegiate",
     "crystal ography" => "crystallography",
@@ -1212,15 +1213,21 @@ foreach (@textfiles) {
     open (FHOUT, '>', $textfile_out) or die "Can't open output file '$textfile_out': $!";
     while (<FH>) {
         my $line = $_;
-
+        
+        # get a list of the matches
         my @matches = $line =~ /(?<=\s)($regex)(?=\s)/ig;
+        # and count them
         my $count = scalar @matches;
 
+        # fix any words that matched
         $line =~ s/(?<=\s)($regex)(?=\s)/$replace{$1}/ig;
 
+        #output the line to the cleaned file
         print FHOUT $line; 
 
+        # count the instance of a match
         $i += $count;
+        #add the matches to the list of all matches for the file
         @all_matches = uniq(@all_matches, @matches);
 
     }
