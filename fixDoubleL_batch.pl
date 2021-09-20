@@ -5,9 +5,10 @@ use warnings;
 use 5.18.0;
 
 # Usage:  
-    # 1st Argument: The file to clean
+    # 1st Argument: The file to containing the LL words
 
-print STDOUT "Run at " . localtime() . "\n\n";
+print STDOUT "================================================================================\n";
+print STDOUT "fixDoubleL Script Run at " . localtime() . "\n";
 
 # a function to remove duplicates from an array
 sub uniq (@) {
@@ -29,7 +30,7 @@ while ( readdir $dh ) {
 }
 my $numfiles = scalar @textfiles;
 
-print STDOUT "There are $numfiles file(s) to process: ";
+print STDOUT "* There are $numfiles file(s) to process: ";
 print STDOUT join "; ", @textfiles;
 print STDOUT ".\n";
 
@@ -56,8 +57,8 @@ for ( @lines ) {
 
 # output the number of entries imported
 my $num_words = scalar keys %replace;
-print STDOUT "\nThere are $num_words entrie(s) in the \%replace hash.\n";
-
+print STDOUT "* There are $num_words entrie(s) in the \%replace hash from [$wordfile].\n";
+print STDOUT "================================================================================\n\n";
 
 my $regex = join "|", map { quotemeta } sort { $b cmp $a } keys %replace;
 
