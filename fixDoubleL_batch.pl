@@ -1292,7 +1292,7 @@ foreach (@textfiles) {
         my $count = scalar @matches;
 
         # fix any words that matched
-        $line =~ s/(?<=[ -—–…])($regex)(?=[ -,.—–…])/$replace{$1}/ig;
+        $line =~ s/(?<=[ -—–…“"])($regex)(?=[ -,.—–…'’])/$replace{$1}/ig;
 
         #output the line to the cleaned file
         print FHOUT $line; 
