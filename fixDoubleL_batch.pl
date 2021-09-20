@@ -1267,6 +1267,9 @@ my %replace = (
 	"level ed" => "levelled",
 );
 
+# duplicate all the replacements with a first letter capitalised.
+@replace{ map { ucfirst } keys %replace } = map { ucfirst } values %replace;
+
 my $regex = join "|", map { quotemeta } sort { $b cmp $a } keys %replace;
 
 $regex = qr/$regex/;
@@ -1286,13 +1289,16 @@ foreach (@textfiles) {
     while (<FH>) {
         my $line = $_;
         
+        my $before = " -—–…“\"";
+        my $after = " -,.—–…'’";
+
         # get a list of the matches
-        my @matches = $line =~ /(?<=[ -—–…“"])($regex)(?=[ -,.—–…'’])/ig;
+        my @matches = $line =~ /(?<=[$before])($regex)(?=[$after])/g;
         # and count them
         my $count = scalar @matches;
 
         # fix any words that matched
-        $line =~ s/(?<=[ -—–…“"])($regex)(?=[ -,.—–…'’])/$replace{$1}/ig;
+        $line =~ s/(?<=[$before])($regex)(?=[$after])/$replace{$1}/g;
 
         #output the line to the cleaned file
         print FHOUT $line; 
