@@ -1,7 +1,6 @@
 # doubleL
 Perl script to restore LL to batch of text files where second L is replaced by space.  The github url is [https://github.com/gethryn/doubleL](https://github.com/gethryn/doubleL).
 
-
 ### Run the Cleaning Script (works with multiple files):
 
 * Add your input files to the `html` subdirectory `~/Documents/BookFixScripts/doubleL/html` using Finder.
@@ -39,3 +38,19 @@ Perl script to restore LL to batch of text files where second L is replaced by s
 * Enter the command `pwd` (print working directory) to tell you where you are.
 * Enter the command `cd` on it's own to take you to your home folder `~` (i.e. `/Users/gramps/`.
 * Use up arrow to scroll through previous commands.
+
+
+### For Geth's reference later
+* Use the command `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` to install [OhMyZSH](https://github.com/ohmyzsh/ohmyzsh) (better command line prompts/tools). 
+
+* We may also need [powerline fonts](https://github.com/powerline/fonts), which can be installed with the following:
+```sh
+# clone
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+```
