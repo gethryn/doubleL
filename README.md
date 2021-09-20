@@ -1,12 +1,13 @@
 # doubleL
-Perl script to restore LL to batch of text files where second L is replaced by space.
+Perl script to restore LL to batch of text files where second L is replaced by space.  The github url is [https://github.com/gethryn/doubleL](https://github.com/gethryn/doubleL).
 
 
 ### Run the Cleaning Script (works with multiple files):
 
 * Add your input files to the `html` subdirectory `~/Documents/BookFixScripts/doubleL/html` using Finder.
 
-* Open a Terminal. (Open Finder, and press Cmd-Shift-U to open utilities menu.  Double click on Terminal to open a terminal window)
+* Open a Terminal. (Open Finder, and press Cmd-Shift-U to open utilities menu.  Double click on Terminal to open a terminal window).
+> I recommend you download [iTerm](https://iterm2.com) instead of the basic terminal. Pin it to your dock.
 
 * Use `git pull` to bring down the latest scripts (see below for details). 
 
