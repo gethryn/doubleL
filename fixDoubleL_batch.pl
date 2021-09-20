@@ -1287,7 +1287,7 @@ foreach (@textfiles) {
         my $line = $_;
         
         # get a list of the matches
-        my @matches = $line =~ /(?<=[ -—–…])($regex)(?=[ -,.—–…])/ig;
+        my @matches = $line =~ /(?<=[ -—–…“"])($regex)(?=[ -,.—–…'’])/ig;
         # and count them
         my $count = scalar @matches;
 
