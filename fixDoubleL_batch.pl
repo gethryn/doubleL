@@ -109,3 +109,6 @@ foreach (@textfiles) {
     print STDOUT join "; ", @all_matches;
     print STDOUT ".\n\n";
 }
+
+print STDOUT "Completed at " . localtime() . "\n";
+print STDOUT "================================================================================";
