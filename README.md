@@ -36,7 +36,8 @@ Perl script to restore LL to batch of text files where second L is replaced by s
 
 ### What directory am I in? Get me home!
 * Enter the command `pwd` (print working directory) to tell you where you are.
-* Enter the command `cd` on it's own to take you to your home folder `~` (i.e. `/Users/gramps/`.
+* Enter the command `cd` on it's own to take you to your home folder `~` (i.e. `/Users/gramps/`).
+* Use `cd -` to go back to the directory you were last at (useful if you use `cd` to go home, and then want to go back to `~/Documents/BooxFixScripts/doubleL` without all that typing).
 * Use up arrow to scroll through previous commands.
 
 
