@@ -33,6 +33,8 @@ Perl script to restore LL to batch of text files where second L is replaced by s
 
 * `git pull` to pull doen the latest from the server.
 
+> If you get an error that the information on your machine is newer than server local copy, just run `git push` to send your changes to the server, and then run `git pull` again.  You don't need to worry about one overwriting the other.  Git will merge the changes as long as we haven't bioth changed the same part of a file.
+
 
 ### What directory am I in? Get me home!
 * Enter the command `pwd` (print working directory) to tell you where you are.
