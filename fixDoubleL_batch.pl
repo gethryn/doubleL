@@ -84,7 +84,7 @@ foreach (@textfiles) {
     while (<FH>) {
         my $line = $_;
         
-        my $before = " —–…“\"-";
+        my $before = " —–…‘“\"-";
         my $after = " ,.—–…'’;:?!-";
 
         # get a list of the matches
