@@ -84,8 +84,8 @@ foreach (@textfiles) {
     while (<FH>) {
         my $line = $_;
         
-        my $before = " —–…‘“\"-";
-        my $after = " ,.—–…'’;:?!-";
+        my $before = " —–…‘“\"-"; # boundary conditions before search term
+        my $after = " ,.—–…'’;:?!-"; # boundary conditions after search term
 
         # get a list of the matches
         my @matches = $line =~ /(?<=[$before])($regex)(?=[$after])/g;
