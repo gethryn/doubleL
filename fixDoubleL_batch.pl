@@ -84,11 +84,14 @@ foreach (@textfiles) {
 
         # get a list of the matches
         my @matches = $line =~ /(?<=[$before])($regex)(?=[$after])/g;
+        my @matches_startline = $line =~ /^($regex)(?=[$after])/g;
+
         # and count them
-        my $count = scalar @matches;
+        my $count = scalar @matches + scalar @matches_startline;
 
         # fix any words that matched
         $line =~ s/(?<=[$before])($regex)(?=[$after])/$replace{$1}/g;
+        $line =~ s/^($regex)(?=[$after])/$replace{$1}/g;
 
         #output the line to the cleaned file
         print FHOUT $line; 
