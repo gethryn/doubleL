@@ -33,8 +33,17 @@ Perl script to restore LL to batch of text files where second L is replaced by s
 
 * `git pull` to pull doen the latest from the server.
 
-> If you get an error that the information on your machine is newer than server local copy, just run `git push` to send your changes to the server, and then run `git pull` again.  You don't need to worry about one overwriting the other.  Git will merge the changes as long as we haven't bioth changed the same part of a file.
+> If you get an error that the information on your machine is newer than server local copy (see below), just run `git push` to send your changes to the server, and then run `git pull` again.  You don't need to worry about one overwriting the other.  Git will merge the changes as long as we haven't bioth changed the same part of a file.
 
+```
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:gethryn/doubleL.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
 
 ### What directory am I in? Get me home!
 * Enter the command `pwd` (print working directory) to tell you where you are.
