@@ -55,14 +55,19 @@ for ( @lines ) {
 # add duplicate entry with first letter capitalised for all existing entries
 @replace{ map { ucfirst } keys %replace } = map { ucfirst } values %replace;
 
+# find edge case: words ending in ll that don't have two spaces before next word.
+my @ends_with_ll = grep { m/l\s$/ } keys %replace;
+
 # output the number of entries imported
 my $num_words = scalar keys %replace;
 print STDOUT "* There are $num_words entrie(s) in the \%replace hash from [$wordfile].\n";
 print STDOUT "================================================================================\n\n";
 
 my $regex = join "|", map { quotemeta } sort { $b cmp $a } keys %replace;
+my $regex_ends_with_ll = join "|", map { quotemeta } sort { $b cmp $a } @ends_with_ll;
 
 $regex = qr/$regex/;
+$regex_ends_with_ll = qr/$regex_ends_with_ll/;
 
 # # Open Each Text File
 foreach (@textfiles) {
@@ -84,11 +89,19 @@ foreach (@textfiles) {
 
         # get a list of the matches
         my @matches = $line =~ /(?<=[$before])($regex)(?=[$after])/g;
+        my @matches_startline = $line =~ /^($regex)(?=[$after])/g;
+        my @matches_ends_with_ll = $line =~ /(?<=[$before])($regex_ends_with_ll)(?=\w)/g;
+        my @matches_ends_with_ll_startline = $line =~ /^($regex_ends_with_ll)(?=\w)/g;
+
         # and count them
-        my $count = scalar @matches;
+        my $count = scalar @matches + scalar @matches_startline + 
+            scalar @matches_ends_with_ll + scalar @matches_ends_with_ll_startline;
 
         # fix any words that matched
         $line =~ s/(?<=[$before])($regex)(?=[$after])/$replace{$1}/g;
+        $line =~ s/^($regex)(?=[$after])/$replace{$1}/g;
+        $line =~ s/(?<=[$before])($regex_ends_with_ll)(?=\w)/$replace{$1} /g; # edge case ends with ll
+        $line =~ s/^($regex_ends_with_ll)(?=\w)/$replace{$1} /g; # ends with ll at start of line
 
         #output the line to the cleaned file
         print FHOUT $line; 
@@ -96,7 +109,8 @@ foreach (@textfiles) {
         # count the instance of a match
         $i += $count;
         #add the matches to the list of all matches for the file
-        @all_matches = uniq(@all_matches, @matches);
+        @all_matches = uniq(@all_matches, @matches, @matches_startline, 
+                            @matches_ends_with_ll, @matches_ends_with_ll_startline);
 
     }
     

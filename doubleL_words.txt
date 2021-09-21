@@ -1070,6 +1070,7 @@ scull
 dilly
 allee
 jello
+Jello
 spall
 pally
 hullo
@@ -1289,7 +1290,6 @@ bellowing
 bellowed
 I'll
 trellises
-alltogether
 Lucille
 mollify
 mollified
@@ -1354,7 +1354,14 @@ financially
 mademoiselle
 nationally
 normally
+<<<<<<< HEAD
 foothills
 gradually
 calls
 usually
+=======
+walled
+Snickersville
+tollbooth
+bulldozed
+>>>>>>> 0ab17d858ad68817850537362a08214bc4ec590d
