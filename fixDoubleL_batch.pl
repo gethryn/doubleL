@@ -80,7 +80,7 @@ foreach (@textfiles) {
         my $line = $_;
         
         my $before = " —–…“\"-";
-        my $after = " ,.—–…'’;:-";
+        my $after = " ,.—–…'’;:?!-";
 
         # get a list of the matches
         my @matches = $line =~ /(?<=[$before])($regex)(?=[$after])/g;
